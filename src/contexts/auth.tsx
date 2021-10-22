@@ -15,6 +15,7 @@ interface User {
 interface AuthContextData {
     user: User | null
     signInUrl: string
+    signOut: () => void
 }
 
 interface AuthResponse {
@@ -44,6 +45,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setUser(user)
     }
 
+    function signOut() {
+        setUser(null)
+        localStorage.removeItem('@dowhile:token')
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('@dowhile:token')
 
@@ -70,7 +76,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ signInUrl, user }}>
+        <AuthContext.Provider value={{ signInUrl, user, signOut }}>
             {children}
         </AuthContext.Provider>
     )

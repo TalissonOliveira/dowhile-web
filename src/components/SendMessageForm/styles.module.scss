@@ -1,0 +1,144 @@
+.sendMessageFormWrapper {
+    background: #1b1b1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+    padding: 24px;
+
+    position: relative;
+}
+
+.signOutButton {
+    background: transparent;
+    border: none;
+    color: #c4c4cc;
+
+    position: absolute;
+    left: 24px;
+    top: 24px;
+
+    cursor: pointer;
+
+    transition: filter .2s;
+
+    &:hover {
+        filter: brightness(.9);
+    }
+}
+
+.userInformation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 48px;
+
+    .userImage {
+        background: linear-gradient(104.3deg, #FF008E 0.48%, #FFCD1E 100%);
+        padding: 3px;
+        line-height: 0;
+        border-radius: 50%;
+
+        img {
+            width: 94px;
+            height: 94px;
+            border-radius: 50%;
+            border: 6px solid #1b1b1f;
+        }
+    }
+
+    .userName {
+        font-size: 24px;
+        line-height: 30px;
+        margin-top: 16px;
+    }
+    
+    .userGithub {
+        display: flex;
+        align-items: center;
+
+        color: #c4c4cc;
+        font-size: 14px;
+        line-height: 14px;
+
+        margin-top: 8px;
+
+        svg {
+            margin-right: 8px;
+        }
+    }
+}
+
+.sendMessageForm {
+    background: #202024;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+
+    margin-top: 48px;
+
+    label {
+        background: #29292e;
+        color: #e1e1e6;
+        padding: 18px 24px;
+
+        text-align: left;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    textarea {
+        background: transparent;
+        color: #e1e1e6;
+        height: 160px;
+
+        padding: 24px;
+        font-size: 16px;
+        line-height: 24px;
+
+        border: none;
+        resize: none;
+
+        &:focus {
+            outline: 0;
+        }
+
+        &::placeholder {
+            color: #8d8d99;
+        }
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: #ff008e;
+        color: #ffffff;
+
+        height: 40px;
+        padding: 10px 32px;
+        margin: 24px;
+
+        border: none;
+        border-radius: 0px;
+
+        align-self: flex-end;
+
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        cursor: pointer;
+
+        transition: filter .2s;
+
+        &:hover {
+            filter: brightness(.8);
+        }
+    }
+}

@@ -39,11 +39,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
         })
 
         const { token, user } = response.data
-
         localStorage.setItem('@dowhile:token', token)
 
         setUser(user)
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('@dowhile:token')
+
+        if (token) {
+            // Mandar token no headers das requisições
+            api.defaults.headers.common.authorization = `Bearer ${token}`
+
+            api.get<User>('profile').then(response => {
+                setUser(response.data)
+            })
+        }
+    }, [])
 
     useEffect(() => {
         const url = window.location.href
@@ -52,7 +64,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         if(hasGithubCode) {
             const [ urlWithoutCode, githubCode ] = url.split('?code=')
 
-            window.history.pushState({}, '', urlWithoutCode)
+            window.history.pushState({}, '', urlWithoutCode) // trocar url
             signIn(githubCode)
         }
     }, [])
